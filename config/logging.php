@@ -114,6 +114,16 @@ return [
             'path' => storage_path('logs/rodo_client.log'),
             'level' => 'info',
         ],
+        'cron' => [
+            'driver' => 'single',
+            'path' => storage_path('logs/cron.log'),
+            'level' => 'info',
+        ],
+        'property_import' => [
+            'driver' => 'single',
+            'path' => storage_path('logs/property_import.log'),
+            'level' => 'debug',
+        ]
     ],
 
 ];

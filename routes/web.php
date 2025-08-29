@@ -44,6 +44,9 @@ Route::group(['namespace' => 'Front', 'middleware' => 'restrictIp', 'as' => 'fro
     Route::get('/aktualnosci', 'ArticleController@index')->name('article.index');
     Route::get('/aktualnosci/{slug}', 'ArticleController@show')->name('article.show');
 
+    //Cron
+    Route::get('/cron', 'Cron\IndexController@updateVOX')->name('cron.vox');
+
 
     // Static pages
     Route::get(
