@@ -29,6 +29,7 @@ class Property extends Model
         'number',
         'number_order',
         'type',
+        'type_vox',
         'rooms',
         'area',
         'area_search',
