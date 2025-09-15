@@ -110,7 +110,6 @@
                                             @if($property->priceHistory->count() > 0 && $property->status == 1)
                                                 <div class="row">
                                                     <div class="col-12">
-                                                        <a href="#" class="project-btn">Historia ceny</a>
                                                         <table class="table mt-3 mb-0">
                                                             <thead>
                                                             <tr>

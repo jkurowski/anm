@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
 class PriceHistory extends Model
@@ -22,5 +23,11 @@ class PriceHistory extends Model
     public function property()
     {
         return $this->belongsTo(Property::class, 'real_estate_id');
+    }
+
+
+    public function getFormattedDateModifiedAttribute()
+    {
+        return Carbon::parse($this->date_modified)->format('d.m.Y H:i');
     }
 }
