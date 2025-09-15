@@ -46,6 +46,7 @@ class RealEstateParser
                 //'floor_id' => $propertyData['floor'] ?? null,
                 'price' => $propertyData['price']['net'] ?? null,
                 'price_brutto' => $propertyData['price']['gross'] ?? null,
+                'type_vox' => $propertyData['type']['id'] ?? 0,
                 //'ask_for_price' => $propertyData['ask_for_price'] ?? 0,
                 //'file' => $propertyData['links']['plan'] ?? null,
                 //'file_pdf' => $propertyData['links']['card'] ?? null,
