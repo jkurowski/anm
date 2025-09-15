@@ -60,7 +60,7 @@ class Property extends Model
         'active'
     ];
 
-    public function priceHistory($date = '2025-09-11')
+    public function priceHistory($date = '2021-09-11')
     {
         return $this->hasMany(PriceHistory::class, 'real_estate_id')
             ->where('date_modified', '>', $date)
