@@ -14,6 +14,7 @@ if (! function_exists('number2RoomsName')) {
             6 => '6 pokoi',
             7 => '7 pokoi',
             8 => '8 pokoi',
+            0 => 'brak',
         ];
 
         if(!$slug){
