@@ -110,7 +110,7 @@
                                             @if($property->priceHistory->count() > 0 && $property->status == 1)
                                                 <div class="row">
                                                     <div class="col-12">
-                                                        <table class="table mt-3 mb-0">
+                                                        <table class="table m-0">
                                                             <thead>
                                                             <tr>
                                                                 <th></th>
