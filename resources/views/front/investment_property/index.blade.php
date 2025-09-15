@@ -166,14 +166,18 @@
                                             @endif
 
                                             <div class="d-flex flex-column gap-2 w-75">
+                                                @if($property->rooms > 0)
                                                 <div class="d-flex justify-content-between">
                                                     <span>pokoje:</span>
                                                     <span> {{$property->rooms}}</span>
                                                 </div>
+                                                @endif
+                                                @if($property->area > 0)
                                                 <div class="d-flex justify-content-between">
                                                     <span>metraż:</span>
                                                     <span> {{$property->area}} m<sup>2</sup></span>
                                                 </div>
+                                                @endif
                                                 @if($property->balcony_area)
                                                 <div class="d-flex justify-content-between">
                                                     <span>balkon:</span>
