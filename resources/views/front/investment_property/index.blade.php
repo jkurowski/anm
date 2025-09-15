@@ -106,6 +106,11 @@
                                                         <span class="d-block" style="color:#d92727">@money(($property->promotion_price / $property->area)) / m<sup>2</sup></span>
                                                     </div>
                                                 @endif
+                                                @if($property->priceHistory->count() == 0 && $property->status == 1)
+                                                    <div class="col-12 mt-2">
+                                                        <p>Cena nie zmieniła się od 11.09.2025 r.</p>
+                                                    </div>
+                                                @endif
                                             </div>
                                             @if($property->priceHistory->count() > 0 && $property->status == 1)
                                                 <div class="row">
