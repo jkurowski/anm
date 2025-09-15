@@ -19,10 +19,10 @@ if (! function_exists('floorLevel')) {
             10 => '10 piętro',
         ];
 
-        if(!$slug){
-            return $floorLevels[$number] ?? '';
-        } else {
-            return Str::slug($floorLevels[$number] ?? '');
-        }
+        $default = 'Brak'; // <-- custom fallback
+
+        $value = $floorLevels[$number] ?? $default;
+
+        return $slug ? Str::slug($value) : $value;
     }
 }
