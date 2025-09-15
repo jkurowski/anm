@@ -60,6 +60,13 @@ class Property extends Model
         'active'
     ];
 
+    public function priceHistory($date = '2025-09-11')
+    {
+        return $this->hasMany(PriceHistory::class, 'real_estate_id')
+            ->where('date_modified', '>', $date)
+            ->orderBy('date_modified', 'desc'); // newest first
+    }
+
     /**
      * Get next property
      * @param int $investment
