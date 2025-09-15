@@ -93,6 +93,74 @@
                                                 <!-- SUBTITLE -->
                                                 {!! roomPageStatusBadge($property->status) !!}
                                             </div>
+                                            <div class="row mb-3">
+                                                @if($property->price_brutto && $property->status == 1)
+                                                    <div class="col-12 col-sm-6 @if($property->highlighted) promotion-price order-2 text-center text-sm-end @endif">
+                                                        <span class="fs-2 d-block"><strong>@money($property->price_brutto)</strong></span>
+                                                        <span class="d-block">@money(($property->price_brutto / $property->area)) / m<sup>2</sup></span>
+                                                    </div>
+                                                @endif
+                                                @if($property->promotion_price && $property->price_brutto && $property->highlighted && $property->status == 1)
+                                                    <div class="col-12 col-sm-6 @if($property->highlighted) order-1 @endif">
+                                                        <span class="fs-2 d-block" style="color:#d92727"><strong>@money($property->promotion_price)</strong></span>
+                                                        <span class="d-block" style="color:#d92727">@money(($property->promotion_price / $property->area)) / m<sup>2</sup></span>
+                                                    </div>
+                                                @endif
+                                            </div>
+                                            @if($property->priceHistory->count() > 0 && $property->status == 1)
+                                                <div class="row">
+                                                    <div class="col-12">
+                                                        <a href="#" class="project-btn">Historia ceny</a>
+                                                        <table class="table mt-3 mb-0">
+                                                            <thead>
+                                                            <tr>
+                                                                <th></th>
+                                                                <th>Stara cena</th>
+                                                                <th>Nowa cena</th>
+                                                                <th>Data zmiany</th>
+                                                            </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                            @foreach($property->priceHistory as $history)
+                                                                <tr>
+                                                                    <td>
+                                                                        @if($history->price_before_gross < $history->price_gross)
+                                                                            <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
+                                                                                 fill="none" stroke="#ae1515" stroke-width="2"
+                                                                                 stroke-linecap="round" stroke-linejoin="round"
+                                                                                 class="feather feather-arrow-up-right">
+                                                                                <line x1="7" y1="17" x2="17" y2="7" />
+                                                                                <polyline points="7 7 17 7 17 17" />
+                                                                            </svg>
+                                                                        @else
+                                                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
+                                                                                 viewBox="0 0 24 24" stroke="#00a304" stroke-width="2"
+                                                                                 stroke-linecap="round" stroke-linejoin="round"
+                                                                                 class="feather feather-arrow-down-right">
+                                                                                <line x1="7" y1="7" x2="17" y2="17"></line>
+                                                                                <polyline points="17 7 17 17 7 17"></polyline>
+                                                                            </svg>
+                                                                        @endif
+                                                                    </td>
+                                                                    <td>
+                                                                        {{ $history->price_before_gross }} zł
+                                                                        <small>{{ $history->price_before_per_mkw }} zł/m<sup>2</sup></small>
+                                                                    </td>
+                                                                    <td>
+                                                                        {{ $history->price_gross }} zł
+                                                                        <small>{{ $history->price_per_mkw }} zł/m<sup>2</sup></small>
+                                                                    </td>
+                                                                    <td>
+                                                                        {{ $history->formatted_date_modified }}
+                                                                    </td>
+                                                                </tr>
+                                                            @endforeach
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            @endif
+
                                             <div class="d-flex flex-column gap-2 w-75">
                                                 <div class="d-flex justify-content-between">
                                                     <span>pokoje:</span>
