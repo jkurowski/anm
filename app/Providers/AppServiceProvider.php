@@ -101,7 +101,7 @@ class AppServiceProvider extends ServiceProvider
         });
 
         Blade::directive('money', function ($amount) {
-            return "<?php echo number_format($amount, 0) . ' zł'; ?>";
+            return "<?php echo number_format($amount, 0, '', ' ') . ' zł'; ?>";
         });
 
         Image::observe(ImageObserver::class);
