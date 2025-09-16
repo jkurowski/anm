@@ -217,6 +217,9 @@
                                             @if($property->file_3d)
                                                 <a class="col order-0 order-lg-3 pb-4 pb-lg-0 text-black link-offset-2 link-underline link-underline-opacity-0 ms-auto link-underline-opacity-100-hover" href="{{ asset('/investment/property/pdf/'.$property->file_3d) }}" target="_blank">POBIERZ KARTĘ 3D</a>
                                             @endif
+                                                @if($property->file_pdf)
+                                                    <a class="col order-0 order-lg-3 pb-4 pb-lg-0 text-black link-offset-2 link-underline link-underline-opacity-0 ms-auto link-underline-opacity-100-hover" href="{{ asset('/investment/prospekt.pdf') }}" target="_blank">PROSPEKT INFORMACYJNY</a>
+                                                @endif
                                         </div>
                                     </article>
                                 </div>
