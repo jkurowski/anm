@@ -26,7 +26,7 @@
                     <td>{{ $item['id'] }}</td>
                     <td>{{ $investment->name }} - id: {{ $investment->id }}</td>
                     <td>{{ $item['type']['name'] }} {{ $item['name'] }}</td>
-                    <td>{{ $item['status']['id'] }}</td>
+                    <td>{{ voxStatus($item['status']['id']) }}</td>
                     <td>{{ $item['floor'] }}</td>
                     <td>{{ $item['rooms'] }}</td>
                     <td>{{ $item['area'] }}</td>
