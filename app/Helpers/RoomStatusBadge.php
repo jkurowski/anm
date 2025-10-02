@@ -11,7 +11,7 @@ if (! function_exists('roomStatusBadge')) {
             case '3':
                 return '<span class="text-danger text-uppercase">SPRZEDANE</span>';
             case '4':
-                return '<span class="text-warning text-uppercase">WYNAJĘTE</span>';
+                return '<span class="text-warning text-uppercase">REZERWACJA USTNA</span>';
         }
     }
 }

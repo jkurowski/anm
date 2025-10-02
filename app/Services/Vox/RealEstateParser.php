@@ -90,8 +90,9 @@ class RealEstateParser
     {
         // mapa ID -> status
         $map = [
-            1 => 1,                                         // Na sprzedaż
-            2 => 2, 3 => 2,                                 // Rezerwacja
+            1 => 1,                                 // Na sprzedaż
+            2 => 4,                                 // Rezerwacja ustna
+            3 => 2,                                 // Rezerwacja
             4 => 3, 5 => 3, 6 => 3, 7 => 3, 8 => 3, 9 => 3  // Sprzedane
         ];
 

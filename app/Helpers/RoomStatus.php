@@ -11,7 +11,7 @@ if (! function_exists('roomStatus')) {
             case '3':
                 return 'Sprzedane';
             case '4':
-                return 'Wynajęte';
+                return 'Rezerwacja ustna';
         }
     }
 }
