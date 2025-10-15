@@ -152,6 +152,15 @@
                     </div>
 
                     <div class="row w-100 mb-4">
+                        @include('form-elements.html-input-file-pdf', [
+                            'label' => 'Prospekt informacyjny',
+                            'name' => 'file_brochure',
+                            'file' => $entry->file_brochure,
+                            'file_preview' => config('images.investment.brochure_file_path')
+                        ])
+                    </div>
+
+                    <div class="row w-100 mb-4">
                         <div class="col-12">
                             @include('form-elements.html-input-text', ['label' => 'Galerie', 'sublabel'=> 'Wpisz numery id galerii, oddzielając je przecinkami, bez spacji.', 'name' => 'galleries', 'value' => $entry->galleries])
                         </div>

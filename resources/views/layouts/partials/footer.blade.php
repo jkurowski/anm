@@ -54,11 +54,18 @@
                         >UDOGODNIENIA</a
                         >
                     </li>
-                    <li class="link-con">
+                    <li class="pb-3 link-con">
                         <a class="footer-link link-anim" href="/inwestor"
                         >INWESTOR</a
                         >
                     </li>
+                    @if($brochureLink)
+                        <li class="link-con">
+                        <a href="{{ $brochureLink }}" target="_blank" class="footer-link link-anim">
+                            PROSPEKT INFORMACYJNY
+                        </a>
+                        </li>
+                    @endif
                 </ul>
             </div>
             <div class="col-12 col-md-6 col-xl-3">

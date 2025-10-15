@@ -46,6 +46,7 @@ class Investment extends Model
         'file_thumb',
         'file_logo',
         'file_header',
+        'file_brochure',
         'galleries',
         'lat',
         'lng',

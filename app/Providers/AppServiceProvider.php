@@ -98,6 +98,15 @@ class AppServiceProvider extends ServiceProvider
 
             $currentRoute = Route::current();
             $view->with('currentRoute', $currentRoute);
+
+            // Dodaj link do broszury z inwestycji ID = 1
+            $investment = Investment::find(1);
+
+            $brochureLink = null;
+            if ($investment && $investment->file_brochure) {
+                $brochureLink = asset('investment/brochure/' . $investment->file_brochure);
+            }
+            $view->with('brochureLink', $brochureLink);
         });
 
         Blade::directive('money', function ($amount) {

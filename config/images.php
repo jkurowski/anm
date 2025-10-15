@@ -25,6 +25,7 @@ return [
         'article_file_path' => 'investment/articles/',
         'article_thumb_file_path' => 'investment/articles/thumbs/',
         'article_preview_file_path' => 'investment/articles/thumbs/',
+        'brochure_file_path' => 'investment/brochure/'
     ],
 
     /*
