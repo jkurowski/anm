@@ -2,12 +2,14 @@
 
 namespace App\Services\Vox;
 
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
 use SimpleXMLElement;
 
 // CMS
 use App\Models\Investment;
 use App\Models\Property;
+use App\Models\PriceHistory;
 
 class RealEstateParser
 {
@@ -47,21 +49,51 @@ class RealEstateParser
                 'price' => $propertyData['price']['net'] ?? null,
                 'price_brutto' => $propertyData['price']['gross'] ?? null,
                 'type_vox' => $propertyData['type']['id'] ?? 0,
+                'promotion_price' => !empty($propertyData['promotion']['price'])
+                    ? $propertyData['promotion']['price']
+                    : null,
                 //'ask_for_price' => $propertyData['ask_for_price'] ?? 0,
                 //'file' => $propertyData['links']['plan'] ?? null,
                 //'file_pdf' => $propertyData['links']['card'] ?? null,
             ];
 
             try {
-//                    Property::updateOrCreate(
-//                        ['vox_id' => $propertyData['id']],
-//                        $preparedData
-//                    );
-
                 $property = Property::where('vox_id', $propertyData['id'])->first();
 
                 if ($property) {
                     $property->update($preparedData);
+
+                    if (!empty($propertyData['price_change_history'])) {
+                        $response = Http::get($propertyData['price_change_history']);
+
+                        if ($response->ok()) {
+                            $xml = simplexml_load_string($response->body(), "SimpleXMLElement", LIBXML_NOCDATA);
+
+                            // Delete existing history for this property
+                            PriceHistory::where('real_estate_id', $property->id)->delete();
+
+                            foreach ($xml->realestate->price_history->price_change as $change) {
+                                PriceHistory::create([
+                                    'real_estate_id' => $property->id,
+                                    'date_modified' => (string) $change->date_modified,
+                                    'price_gross' => (float) $change->after->price,
+                                    'price_net' => (float) $change->after->price_net,
+                                    'price_per_mkw' => (float) $change->after->pricemkw,
+                                    'price_per_mkw_net' => (float) $change->after->pricemkw_net,
+                                    'price_before_gross' => (float) $change->before->price,
+                                    'price_before_net' => (float) $change->before->price_net,
+                                    'price_before_per_mkw' => (float) $change->before->pricemkw,
+                                    'price_before_per_mkw_net' => (float) $change->before->pricemkw_net,
+                                ]);
+                            }
+                        } else {
+                            // Handle HTTP error
+                            logger()->error('Failed to fetch price history', [
+                                'url' => $propertyData['price_change_history'],
+                                'status' => $response->status(),
+                            ]);
+                        }
+                    }
                 }
 
                 // Log success to custom channel
