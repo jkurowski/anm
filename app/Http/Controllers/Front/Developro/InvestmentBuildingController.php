@@ -29,6 +29,9 @@ class InvestmentBuildingController extends Controller
         $investment_room = $investment->load(array(
             'buildingRooms' => function($query) use ($building, $request)
             {
+                $query->orderByRaw("FIELD(type_vox, 1, 8, 12, 11, 4)");
+                $query->orderBy('number');
+
                 $query->where('properties.building_id', $building->id);
                 if ($request->input('s_pokoje')) {
                     $query->where('rooms', $request->input('s_pokoje'));

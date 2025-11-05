@@ -30,6 +30,9 @@ class InvestmentFloorController extends Controller
         $investment_room = $investment->load(array(
             'floorRooms' => function($query) use ($floor, $request)
             {
+                $query->orderByRaw("FIELD(type_vox, 1, 8, 12, 11, 4)");
+                $query->orderBy('number');
+
                 $query->where('properties.floor_id', $floor->id);
 
                 if ($request->input('s_pokoje')) {
