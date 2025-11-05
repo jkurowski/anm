@@ -237,7 +237,7 @@
                         <ul class="row apartments-grid gy-4 gx-lg-0 mt-4 mt-sm-0 justify-content-lg-start" id="grid-rows">
                             <!-- DOSTĘPNE  -->
                             @foreach($properties as $p)
-                            <li class="col-12 box" data-aos="fade-right" data-aos-delay="100" data-aos-offset="-120">
+                            <li class="col-12 box" data-aos-offset="-120">
 
                                 {!! roomStatusBadge($p->status) !!}
 

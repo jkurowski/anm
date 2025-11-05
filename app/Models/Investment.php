@@ -180,7 +180,7 @@ class Investment extends Model
      */
     public function properties(): HasMany
     {
-        return $this->hasMany('App\Models\Property')->orderBy('number_order');
+        return $this->hasMany('App\Models\Property');
     }
 
     /**
